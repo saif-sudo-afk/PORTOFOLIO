@@ -1,0 +1,27 @@
+import './styles/index.css';
+import fr from './content/fr.json';
+import en from './content/en.json';
+
+const queryLanguage = new URLSearchParams(location.search).get('lang');
+const language = (queryLanguage === 'en' || queryLanguage === 'fr' ? queryLanguage : localStorage.getItem('portfolio-language') === 'en' ? 'en' : 'fr') as 'fr' | 'en';
+const data = language === 'fr' ? fr : en;
+localStorage.setItem('portfolio-language', language);
+document.documentElement.lang = language;
+document.title = `${data.cv.heading} — Saif-Eddine Bahiri`;
+const escape = (value: string) => value.replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!);
+const target = document.querySelector<HTMLElement>('#cv-content')!;
+const section = (num: string, title: string, content: string) => `<section class="cv-section"><h2><span>${num}</span>${title}</h2>${content}</section>`;
+const experiences = data.experience.map((item) => `<article class="cv-entry"><div class="cv-entry-date">${escape(item.date)}${item.place ? `<br>${escape(item.place)}` : ''}</div><div><h3>${escape(item.company)} · ${escape(item.role)}${item.department ? ` · ${escape(item.department)}` : ''}</h3><p>${escape(item.certificate)}</p><ul>${item.points.map((point) => `<li>${escape(point)}</li>`).join('')}</ul></div></article>`).join('');
+const astaPoints = data.asta.points.map((point) => `<li>${escape(point)}</li>`).join('');
+const studentPoints = data.student.points.map((point) => `<li>${escape(point)}</li>`).join('');
+const projects = `<article class="cv-entry"><div class="cv-entry-date">2026 · GEBRAIN</div><div><h3>ASTA · Python, Kali Linux, LiteLLM, SQLite</h3><p>${escape(data.asta.summary)}</p><ul>${astaPoints}</ul></div></article><article class="cv-entry"><div class="cv-entry-date">2025–2026</div><div><h3>Student Hub · Django, DRF, React, TypeScript, PostgreSQL</h3><p>${escape(data.student.summary)}</p><ul>${studentPoints}</ul></div></article>`;
+const skills = data.skills.groups.map((group) => `<div class="cv-skill"><strong>${escape(group.name)}</strong><span>${escape(group.items)}</span></div>`).join('');
+const education = data.education.entries.map((item) => `<article class="cv-entry"><div class="cv-entry-date">${escape(item.date)}</div><div><h3>${escape(item.title)}</h3><p>${escape(item.school)}</p>${item.detail ? `<p>${escape(item.detail)}</p>` : ''}</div></article>`).join('');
+const languages = data.education.languagesList.map((item) => `${escape(item.name)} (${escape(item.level)})`).join(' · ');
+target.innerHTML = `<header class="cv-header"><div><h1>Saif-Eddine Bahiri</h1><p>${escape(data.hero.role.replace('<br />', ' '))}</p><div class="cv-contact"><span>${escape(data.contact.email)}</span><span>${escape(data.contact.phone)}</span><span>${escape(data.contact.location)}</span><span>github.com/saif-sudo-afk</span></div></div><span class="cv-monogram" aria-label="Monogram SB">SB</span></header><p class="cv-profile">${escape(data.profile.body)}</p>${section('01', data.cv.experience, experiences)}${section('02', data.cv.projects, projects)}${section('03', data.cv.skills, skills)}${section('04', data.cv.education, education)}${section('05', data.cv.certifications, `<p class="cv-subline">${escape(data.education.certificationsText)}</p>`)}${section('06', data.cv.languages, `<p class="cv-subline">${languages}</p>`)}<footer class="cv-footer"><span>SAIF-EDDINE BAHIRI · ${language.toUpperCase()}</span><span>CASABLANCA, MOROCCO</span></footer>`;
+document.querySelector('[data-cv-heading]')!.textContent = data.cv.heading;
+document.querySelector<HTMLAnchorElement>('[data-cv-view]')!.textContent = `← ${data.cv.view}`;
+document.querySelector<HTMLAnchorElement>('[data-cv-language]')!.textContent = data.cv.lang;
+document.querySelector<HTMLAnchorElement>('[data-cv-language]')!.href = `?lang=${language === 'fr' ? 'en' : 'fr'}`;
+document.querySelector<HTMLButtonElement>('[data-print]')!.textContent = data.cv.print;
+document.querySelector<HTMLButtonElement>('[data-print]')!.addEventListener('click', () => window.print());
