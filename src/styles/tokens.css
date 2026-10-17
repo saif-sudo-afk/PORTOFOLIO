@@ -11,6 +11,8 @@
     --accent: #8b1a2b;
     --accent-hover: #6f1320;
     --accent-soft: #efd7d9;
+    --contact-bg: #8b1a2b;
+    --contact-muted: #f3cbd0;
     --serif: 'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
     --sans: 'DM Sans', 'Avenir Next', Avenir, sans-serif;
     --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
@@ -35,6 +37,8 @@
     --accent: #d36b7b;
     --accent-hover: #f08b9a;
     --accent-soft: #392326;
+    --contact-bg: #5b1521;
+    --contact-muted: #f3cbd0;
   }
   @font-face {
     font-family: 'Instrument Serif';

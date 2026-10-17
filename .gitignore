@@ -5,3 +5,5 @@ test-results/
 qa-artifacts/
 .vercel/
 *.log
+
+.vercel

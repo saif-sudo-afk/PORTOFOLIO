@@ -137,8 +137,9 @@
   .languages-list > div { display: flex; justify-content: space-between; gap: .5rem; padding: .6rem .2rem .6rem 0; border-bottom: 1px solid var(--line); font-size: .8rem; }
   .languages-list small { color: var(--muted); font: .62rem var(--mono); }
 
-  .contact { position: relative; overflow: hidden; padding-top: clamp(2rem, 4vw, 3.5rem); padding-bottom: clamp(3rem, 7vw, 6rem); background: var(--accent); color: #fff7f1; }
-  .contact-top { display: flex; justify-content: space-between; color: #f3cbd0; }
+  .contact { position: relative; overflow: hidden; padding-top: clamp(2rem, 4vw, 3.5rem); padding-bottom: clamp(3rem, 7vw, 6rem); background: var(--contact-bg); color: #fff7f1; }
+  .contact-top { display: flex; justify-content: space-between; color: var(--contact-muted); }
+  .contact .mono-label, .contact .section-no { color: var(--contact-muted); }
   .contact h2 { width: fit-content; margin: clamp(2rem, 5vw, 4.2rem) 0 1.2rem -.06em; font-family: var(--serif); font-size: clamp(5rem, 17vw, 16rem); line-height: .72; letter-spacing: -.07em; transition: transform .35s var(--ease); }
   .contact h2 > span { color: #f5cbd1; }
   .contact-email { display: inline-flex; align-items: center; gap: 1rem; max-width: 100%; border-bottom: 1px solid #d99aa3; padding-bottom: .25rem; font-size: clamp(1rem, 2.1vw, 1.7rem); transition: color .2s ease, border-color .2s ease; }

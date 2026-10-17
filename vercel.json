@@ -1,6 +1,8 @@
 {
-  "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/cv", "destination": "/cv.html" }
+  ],
   "headers": [
     { "source": "/(.*)", "headers": [
       { "key": "X-Content-Type-Options", "value": "nosniff" },

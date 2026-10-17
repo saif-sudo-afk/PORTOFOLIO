@@ -1,5 +1,5 @@
 @layer layout {
-  .site-header { position: sticky; z-index: 100; top: 0; display: grid; grid-template-columns: minmax(100px, 1fr) 2fr minmax(200px, 1fr); align-items: center; min-height: var(--header); padding-inline: var(--space); border-bottom: 1px solid color-mix(in srgb, var(--line), transparent 24%); background: color-mix(in srgb, var(--paper) 93%, transparent); backdrop-filter: blur(10px); }
+  .site-header { position: sticky; z-index: 100; top: 0; display: grid; grid-template-columns: minmax(100px, 1fr) 2fr minmax(200px, 1fr); align-items: center; min-height: var(--header); padding-inline: var(--space); border-bottom: 1px solid var(--line); background: var(--paper); }
   .brand-mark { width: max-content; font-family: var(--serif); font-size: 1.65rem; letter-spacing: -.1em; color: var(--accent); }
   .brand-mark span, .footer-brand span { display: inline-block; margin-left: .35em; font-family: var(--sans); font-size: .6em; letter-spacing: 0; }
   .main-nav { display: flex; justify-content: center; gap: clamp(1rem, 3.5vw, 3.8rem); }

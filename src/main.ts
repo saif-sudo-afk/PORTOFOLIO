@@ -106,7 +106,7 @@ function render(): void {
   if (toggle) {
     toggle.textContent = language === 'fr' ? 'EN' : 'FR';
     toggle.href = `?lang=${language === 'fr' ? 'en' : 'fr'}`;
-    toggle.setAttribute('aria-label', language === 'fr' ? 'Switch to English' : 'Passer en français');
+    toggle.setAttribute('aria-label', language === 'fr' ? 'EN — Switch to English' : 'FR — Passer en français');
   }
   const email = get('contact.email') as string;
   const phone = get('contact.phone') as string;
@@ -152,15 +152,13 @@ copyButton?.addEventListener('click', async () => {
 
 const sections = [...document.querySelectorAll<HTMLElement>('main section[id]')];
 const navLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav]')];
-new IntersectionObserver((entries) => {
+const navObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
     navLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.nav === entry.target.id));
   });
-}, { rootMargin: '-38% 0px -55% 0px' }).observe(sections[0]);
-sections.slice(1).forEach((section) => new IntersectionObserver((entries) => {
-  entries.forEach((entry) => { if (entry.isIntersecting) navLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.nav === entry.target.id)); });
-}, { rootMargin: '-38% 0px -55% 0px' }).observe(section));
+}, { rootMargin: '-38% 0px -55% 0px' });
+sections.forEach((section) => navObserver.observe(section));
 
 const progress = document.querySelector<HTMLElement>('.scroll-progress');
 const updateProgress = () => {
