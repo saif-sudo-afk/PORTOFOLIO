@@ -1,0 +1,81 @@
+@layer tokens {
+  :root {
+    color-scheme: light;
+    --paper: #f6efe9;
+    --paper-deep: #eee4dd;
+    --blush: #f3dde0;
+    --ink: #14100f;
+    --ink-soft: #4f4743;
+    --muted: #766b66;
+    --line: #cfc2ba;
+    --accent: #8b1a2b;
+    --accent-hover: #6f1320;
+    --accent-soft: #efd7d9;
+    --serif: 'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+    --sans: 'DM Sans', 'Avenir Next', Avenir, sans-serif;
+    --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+    --space: clamp(1.25rem, 5.3vw, 6.5rem);
+    --content: 1600px;
+    --header: 82px;
+    --ease: cubic-bezier(.22, .75, .25, 1);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --paper: #191312;
+    --paper-deep: #241c1a;
+    --blush: #38282a;
+    --ink: #f6efe9;
+    --ink-soft: #d0c4be;
+    --muted: #a59891;
+    --line: #554643;
+    --accent: #d36b7b;
+    --accent-hover: #f08b9a;
+    --accent-soft: #392326;
+  }
+  @font-face {
+    font-family: 'Instrument Serif';
+    src: url('../assets/fonts/instrument-serif-latin.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Instrument Serif';
+    src: url('../assets/fonts/instrument-serif-italic-latin.woff2') format('woff2');
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('../assets/fonts/dm-sans-latin.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('../assets/fonts/ibm-plex-mono-regular-latin.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('../assets/fonts/ibm-plex-mono-medium-latin.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('../assets/fonts/ibm-plex-mono-semibold-latin.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+  }
+}
